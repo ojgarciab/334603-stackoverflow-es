@@ -18,11 +18,11 @@ if (empty($_SERVER['HTTPS']) === false
     $esquema = 'http';
 }
 
-$scriptUri = $esquema .'://'. $_SERVER["HTTP_HOST"] . $_SERVER['PHP_SELF']);
+$scriptUri = $esquema .'://'. $_SERVER["HTTP_HOST"] . $_SERVER['PHP_SELF'];
 
 $client = new Google_Client();
 $client->setApplicationName('B'); //name of the application
-$client->setAuthConfig('client_secret.json');
+$client->setAuthConfig('../client_secret.json');
 $client->setRedirectUri($scriptUri); //redirects to same url
 $client->setApprovalPrompt("force");
 $client->setAccessType('offline'); // default: offline
@@ -49,4 +49,5 @@ $post->setLabels([
     'Etiqueta 2',
 ]);
 $post->setContent(file_get_contents("plantilla.html"));
+var_export($service);
 $service->posts->insert('7496096651400930024', $post);
